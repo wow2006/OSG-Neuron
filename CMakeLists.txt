@@ -9,8 +9,12 @@ find_package( osgText )
 find_package( osgViewer )
 find_package( osgAnimation )
 find_package( osgUtil )
-# find qt
-find_package( Qt4 4.4.3 COMPONENTS QtCore QtGui QtXml REQUIRED )
+find_package( osgQt )
+find_package( Qt4 )
+
+# for include Qt
+INCLUDE(${QT_USE_FILE})
+ADD_DEFINITIONS(${QT_DEFINITIONS})
 
 INCLUDE_DIRECTORIES(src)
 INCLUDE_DIRECTORIES(header)
@@ -43,6 +47,12 @@ SET(matrixnode
     ${CMAKE_SOURCE_DIR}/src/matrixnode.cpp
     ${CMAKE_SOURCE_DIR}/header/matrixnode.h
 )
+# include nodematrix files
+SET(viewerwidget
+    ${CMAKE_SOURCE_DIR}/src/viewerwidget.cpp
+    ${CMAKE_SOURCE_DIR}/header/viewerwidget.h
+)
+
 
 macro( config_project PROJNAME LIBNAME )
     include_directories( ${${LIBNAME}_INCLUDE_DIR} )
@@ -50,7 +60,7 @@ macro( config_project PROJNAME LIBNAME )
 endmacro()
 
 
-add_executable( mainLine main.cpp ${COMMON_FILES} ${neuronNode} ${shader} ${light} ${camera} ${matrixnode})
+add_executable( mainLine main.cpp ${COMMON_FILES} ${neuronNode} ${shader} ${light} ${camera} ${matrixnode} ${viewerwidget})
 config_project( mainLine OPENTHREADS )
 config_project( mainLine OSG )
 config_project( mainLine OSGDB )
@@ -59,4 +69,5 @@ config_project( mainLine OSGTEXT )
 config_project( mainLine OSGVIEWER )
 config_project( mainLine osgAnimation )
 config_project( mainLine OSGUTIL )
-config_project( mainLine Qt4 )
+config_project( mainLine OSGQT )
+TARGET_LINK_LIBRARIES(mainLine ${QT_LIBRARIES})
