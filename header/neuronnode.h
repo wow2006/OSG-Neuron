@@ -8,16 +8,14 @@
 
 #include "shader.h"
 
-class neuronNode
+class neuronNode : public osg::MatrixTransform
 {
 public:
     neuronNode();
     osg::Group *get();
-    void setlocation(int x , int y , int z);
 
 private:
     osg::ref_ptr<osg::Node>             _model;
-    osg::ref_ptr<osg::MatrixTransform>  _mt ;
     osg::StateSet*                      _stateset;
     osg::Vec3                           _location;
     osg::Vec4                           _color;

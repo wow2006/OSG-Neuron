@@ -26,6 +26,9 @@ osg::Camera* createCamera( int x, int y, int w, int h )
 void display()
 {
     matrixNode node;
+    //osg::ref_ptr<osg::MatrixTransform> node = new neuronNode;
+
+    std::cout << "001" << std::endl;
 
     osg::Camera* camera = createCamera( 50, 50, 640, 480 );
     ViewerWidget* widget = new ViewerWidget(camera, node.get() );

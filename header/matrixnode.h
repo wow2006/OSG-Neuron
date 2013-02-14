@@ -6,8 +6,8 @@ class matrixNode
 {
 public:
     matrixNode();
-    inline void setLocation(osg::Vec3 &locarion);
-    osg::Group *get();
+    osg::Group* get();
+    void setlocation(int x,int y,int z);
 
 private:
     osg::Vec3 _location;
