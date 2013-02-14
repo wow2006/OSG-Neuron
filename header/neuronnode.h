@@ -13,6 +13,7 @@ class neuronNode : public osg::MatrixTransform
 public:
     neuronNode();
     osg::Group *get();
+    void setShader();
 
 private:
     osg::ref_ptr<osg::Node>             _model;
@@ -22,7 +23,6 @@ private:
 
 
 protected:
-    void setShader();
     void start();
 
 };

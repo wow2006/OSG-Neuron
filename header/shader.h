@@ -7,7 +7,7 @@
 class shader
 {
 public:
-    shader();
+    shader(bool active);
     osg::Program* getShader();
 
 protected:

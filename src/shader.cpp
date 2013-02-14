@@ -1,6 +1,6 @@
 #include "shader.h"
 
-shader::shader()
+shader::shader(bool active)
 {
     osg::ref_ptr<osg::Shader> vertShader = new osg::Shader( osg::Shader::VERTEX );
     osg::ref_ptr<osg::Shader> fragShader = new osg::Shader( osg::Shader::FRAGMENT );
@@ -9,8 +9,16 @@ shader::shader()
     _program->addShader( vertShader.get() );
     _program->addShader( fragShader.get() );
 
-    vertShader->loadShaderSourceFromFile("shader/vertShader.vert");
-    fragShader->loadShaderSourceFromFile("shader/fragShader.frag");
+    if (active)
+    {
+        vertShader->loadShaderSourceFromFile("shader/vertShader.vert");
+        fragShader->loadShaderSourceFromFile("shader/fragShader.frag");
+    }
+    else
+    {
+        vertShader->loadShaderSourceFromFile("shader/vertShader.vert");
+        fragShader->loadShaderSourceFromFile("shader/fragShader.frag");
+    }
 }
 
 osg::Program* shader::getShader()
