@@ -8,12 +8,14 @@
 
 #include "shader.h"
 
+static osg::ref_ptr<osg::Node> basicNode = osgDB::readNodeFile("sphere.obj");
+
 class neuronNode : public osg::MatrixTransform
 {
 public:
     neuronNode();
     osg::Group *get();
-    void setShader();
+    void setShader(bool active);
 
 private:
     osg::ref_ptr<osg::Node>             _model;

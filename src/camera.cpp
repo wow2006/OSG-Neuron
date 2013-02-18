@@ -2,9 +2,23 @@
 
 osg::Camera* camera::setCamera()
 {
-    _camera->setClearMask( GL_DEPTH_BUFFER_BIT );
-    _camera->setRenderOrder( osg::Camera::POST_RENDER );
-    _camera->setReferenceFrame( osg::Camera::ABSOLUTE_RF );
-    _camera->setViewMatrixAsLookAt( osg::Vec3d(-1.0f,0.0f,0.0f) , osg::Vec3d(0.0,0.0,0.0) , osg::Vec3d(0.0f,1.0f,0.0f) );
-    return _camera;
+    return _camera.release();
+}
+
+void camera::run()
+{
+    osg::DisplaySettings* ds = osg::DisplaySettings::instance().get();
+    _traits->windowDecoration = false;
+    _traits->x = 50;
+    _traits->y = 50;
+    _traits->width = 640;
+    _traits->height = 480;
+    _traits->doubleBuffer = true;
+
+    _camera = new osg::Camera;
+    _camera->setGraphicsContext( new osgQt::GraphicsWindowQt(_traits.get()) );
+    _camera->setClearColor( osg::Vec4(0.4, 0.2, 0.6, 1.0) );
+    _camera->setViewport( new osg::Viewport(0, 0, _traits->width, _traits->height) );
+    _camera->setProjectionMatrixAsPerspective(
+        30.0f, static_cast<double>(_traits->width)/static_cast<double>(_traits->height), 1.0f, 10000.0f );
 }

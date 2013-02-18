@@ -10,6 +10,16 @@ matrixNode::matrixNode()
     run();
 }
 
+matrixNode::matrixNode(int x,int y,int z,int dx,int dy,int dz)
+{
+    _location = osg::Vec3( x , y , z );
+    _dim = osg::Vec3( dx , dy , dz );
+    _mtx =  new osg::MatrixTransform;
+    _mtx->setMatrix( osg::Matrix::translate( _location.x() , _location.y() , _location.z() ));
+    num = _dim.x()*_dim.y()*_dim.z();
+    run();
+}
+
 void matrixNode::run()
 {
     osg::ref_ptr<osg::MatrixTransform> nMatrix[num];
@@ -37,4 +47,10 @@ void matrixNode::setlocation(int x, int y, int z)
 osg::Group* matrixNode::get()
 {
     return _mtx->asGroup();
+}
+
+
+void matrixNode::pulse(int x, int y, int z)
+{
+
 }

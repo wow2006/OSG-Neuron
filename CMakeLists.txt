@@ -29,8 +29,6 @@ SET(neuronNode
 SET(shader
     ${CMAKE_SOURCE_DIR}/src/shader.cpp
     ${CMAKE_SOURCE_DIR}/header/shader.h
-    ${CMAKE_SOURCE_DIR}/src/shader/fragShader.frag
-    ${CMAKE_SOURCE_DIR}/src/shader/vertShader.vert
 )
 # include light files
 SET(light

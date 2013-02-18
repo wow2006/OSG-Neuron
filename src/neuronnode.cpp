@@ -2,7 +2,7 @@
 
 neuronNode::neuronNode()
 {
-    _model = osgDB::readNodeFile("sphere.obj");
+    _model = basicNode;
     //this =  new osg::MatrixTransform;
     this->addChild( _model.get() );
     _stateset = _model->getOrCreateStateSet();
@@ -17,11 +17,11 @@ osg::Group* neuronNode::get()
 void neuronNode::start()
 {
     this->setMatrix( osg::Matrix::translate( _location.x() , _location.y() , _location.z() ) );
-    setShader();
+    setShader(true);
 }
 
-void neuronNode::setShader()
+void neuronNode::setShader(bool active)
 {
-    shader _shader(true);
+    shader _shader(active);
     _stateset->setAttributeAndModes( _shader.getShader() );
 }
