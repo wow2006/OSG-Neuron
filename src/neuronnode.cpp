@@ -3,7 +3,6 @@
 neuronNode::neuronNode()
 {
     _model = basicNode;
-    //this =  new osg::MatrixTransform;
     this->addChild( _model.get() );
     _stateset = _model->getOrCreateStateSet();
     start();

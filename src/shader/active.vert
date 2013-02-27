@@ -1,4 +1,4 @@
-const vec4 light_position_world = vec4(0.0, -4.0, 0.0, 1.0);
+const vec4 light_position_world = vec4(4.0, -4.0, 4.0, 1.0);
 
 varying float specular_intensity;
 varying float diffuse_intensity;
@@ -12,7 +12,7 @@ void main(void) {
         vec3 light_refl = normalize(reflect(light_vert, normal_camera));
 
         // diffuse light
-            diffuse_intensity =  max( dot(light_vert, normal_camera) , 0.0);
+        diffuse_intensity = max(dot(light_vert, normal_camera), 0.0);
 
         // specular light
         specular_intensity = max(dot(light_refl, normalize(vec3(vertex_position_camera))), 0.0);

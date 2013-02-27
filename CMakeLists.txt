@@ -49,6 +49,7 @@ SET(matrixnode
 SET(viewerwidget
     ${CMAKE_SOURCE_DIR}/src/viewerwidget.cpp
     ${CMAKE_SOURCE_DIR}/header/viewerwidget.h
+    ${CMAKE_SOURCE_DIR}/header/nodeUpdate.h
 )
 
 

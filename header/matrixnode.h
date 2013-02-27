@@ -1,6 +1,7 @@
 #ifndef MATRIXNODE_H
 #define MATRIXNODE_H
 #include "neuronnode.h"
+#include "nodeUpdate.h"
 
 class  nodeVisitor : public osg::NodeVisitor {
 public :

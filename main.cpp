@@ -6,7 +6,7 @@
 
 void display()
 {
-    matrixNode node;
+    matrixNode node( 0 , 0 , 0 , 3 , 3 , 3 );
     camera mycamera;
     ViewerWidget* widget = new ViewerWidget( mycamera.setCamera() , node.get() );
     widget->setGeometry( 100, 100, 800, 600 );
