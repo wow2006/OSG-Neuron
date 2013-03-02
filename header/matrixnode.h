@@ -1,7 +1,6 @@
 #ifndef MATRIXNODE_H
 #define MATRIXNODE_H
 #include "neuronnode.h"
-#include "nodeUpdate.h"
 
 class  nodeVisitor : public osg::NodeVisitor {
 public :
@@ -37,6 +36,9 @@ public:
     osg::Group* get();
     void setlocation(int x,int y,int z);
     void pulse(int x,int y,int z);
+    ~matrixNode()
+    {
+    }
 
 private:
     osg::Vec3 _location;

@@ -1,3 +1,5 @@
+#include <QTimer>
+#include <QObject>
 #include <osg/Program>
 #include <osgDB/ReadFile>
 
@@ -7,7 +9,7 @@
 class shader
 {
 public:
-    shader(bool active);
+    shader();
     osg::Program* getShader();
 
 protected:

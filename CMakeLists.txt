@@ -49,7 +49,6 @@ SET(matrixnode
 SET(viewerwidget
     ${CMAKE_SOURCE_DIR}/src/viewerwidget.cpp
     ${CMAKE_SOURCE_DIR}/header/viewerwidget.h
-    ${CMAKE_SOURCE_DIR}/header/nodeUpdate.h
 )
 
 
@@ -58,6 +57,7 @@ macro( config_project PROJNAME LIBNAME )
     target_link_libraries( ${PROJNAME} ${${LIBNAME}_LIBRARY} )
 endmacro()
 
+#QT4_WRAP_CPP( neuronNode ${m_neuronNode} )
 
 add_executable( mainLine main.cpp ${COMMON_FILES} ${neuronNode} ${shader} ${light} ${camera} ${matrixnode} ${viewerwidget})
 config_project( mainLine OPENTHREADS )

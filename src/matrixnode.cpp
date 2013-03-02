@@ -22,7 +22,7 @@ matrixNode::matrixNode(int x,int y,int z,int dx,int dy,int dz)
 
 void matrixNode::run()
 {
-    osg::ref_ptr<osg::MatrixTransform> nMatrix[num];
+    neuronNode* nMatrix[num];
     int idx = 0;
     for (int k = 0 ;  k  < _dim.z() ; k++)
         for(int j = 0 ; j < _dim.y() ; j++)
@@ -31,8 +31,8 @@ void matrixNode::run()
                 if (idx < num)
                 {
                     nMatrix[idx] = new neuronNode;
-                    nMatrix[idx]->setMatrix(osg::Matrix::translate( i*3 , j*3 , k*3 ));
-                    _mtx->addChild( nMatrix[idx].get() );
+                    nMatrix[idx]->setTrans(  i*3  ,  j*3  ,  k*3  );
+                    _mtx->addChild( nMatrix[idx]->get() );
                     idx++;
                 }
             }
